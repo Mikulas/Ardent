@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/../src/Ardent/autoload.php';
+require __DIR__ . '/../src/DataStructures/autoload.php';
 
-spl_autoload_register("\Ardent\autoload");
+spl_autoload_register("\DataStructures\autoload");
 

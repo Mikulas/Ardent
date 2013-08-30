@@ -16,7 +16,7 @@ There is no roadmap for this project. I work on it when I find something in my d
 
 ## How can I help?
 
-The best way to help is to use the library and [submit issues](https://github.com/morrisonlevi/Ardent/issues) when you find them. Over 99% of the library has been executed in a unit test but the quality of some of these tests is poor; improved tests are definitely welcome.
+The best way to help is to use the library and [submit issues](https://github.com/morrisonlevi/DataStructures/issues) when you find them. Over 99% of the library has been executed in a unit test but the quality of some of these tests is poor; improved tests are definitely welcome.
 
 ##### Can you add X structure?
 
