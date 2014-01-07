@@ -179,4 +179,32 @@ class HashMap implements Map {
         return count($this->storage);
     }
 
+    /**
+     * @param array|Traversable $map
+     *
+     * @throws TypeException when the $map is not the correct type.
+     */
+    function insertMany($map) {
+        if (!is_array($map) && ! $map instanceof \Traversable) {
+            throw new TypeException;
+        }
+        foreach ($map as $key => $value) {
+            $this->insert($key, $value);
+        }
+    }
+
+    /**
+     * Passed map replaces original values.
+     *
+     * @param array|Traversable $map
+     * @return HashMap
+     *
+     * @throws TypeException when the $map is not the correct type.
+     */
+    function mergeWith($map) {
+        $merged = clone $this;
+        $merged->insertMany($map);
+        return $merged;
+    }
+
 }

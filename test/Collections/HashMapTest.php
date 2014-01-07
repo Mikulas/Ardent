@@ -231,4 +231,50 @@ class HashMapTest extends \PHPUnit_Framework_TestCase {
 
     }
 
+    function testInsertMany() {
+        $map = new HashMap();
+        $map[1] = 2;
+        $map[2] = 4;
+
+        $insert = new HashMap();
+        $insert[2] = 0;
+        $insert[3] = 9;
+
+        $map->insertMany($insert);
+
+        $exp = array(
+            1 => 2,
+            2 => 0,
+            3 => 9,
+        );
+
+        $this->assertSame($exp, $map->toArray(TRUE));
+    }
+
+    function testMergeWith() {
+        $mapA = new HashMap();
+        $mapA[1] = 1;
+        $mapA[2] = 4;
+
+        $mapB = new HashMap();
+        $mapB[1] = 'replaced';
+        $mapB[3] = 9;
+
+        $merged = $mapA->mergeWith($mapB);
+        $this->assertInstanceOf('Collections\Map', $merged);
+
+        $expA = array(
+            1 => 1,
+            2 => 4,
+        );
+        $this->assertSame($expA, $mapA->toArray(TRUE), 'Original map should be immutable');
+
+        $exp = array(
+            1 => 'replaced',
+            2 => 4,
+            3 => 9,
+        );
+        $this->assertSame($exp, $merged->toArray(TRUE));
+    }
+
 }
